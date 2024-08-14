@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-export function TwitterFollowCard({ name, username }) {
+export function TwitterFollowCard ({ name, username }) {
   const [isFollowing, setIsFollowing] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
 
-  const text = isFollowing ? ( isHovering ? 'Dejar de seguir' : 'Siguiendo' ) : 'Seguir'
+  const text = isFollowing ? (isHovering ? 'Dejar de seguir' : 'Siguiendo') : 'Seguir'
   const classButton = isFollowing ? 'tw-followCard-button is-following' : 'tw-followCard-button'
 
   const handleClick = () => {
@@ -20,7 +20,7 @@ export function TwitterFollowCard({ name, username }) {
   }
 
   return (
-    <article className="tw-followCard">
+    <article className='tw-followCard'>
       <header className='tw-followCard-header'>
         <img
           className='tw-followCard-avatar'
@@ -40,7 +40,7 @@ export function TwitterFollowCard({ name, username }) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          { text }
+          {text}
         </button>
       </aside>
     </article>

@@ -1,9 +1,9 @@
-import { Square } from "./Square.jsx"
+import { Square } from './Square.jsx'
 
 export const WinnerModal = ({ winner, resetGame }) => {
   return (
     <section className='winner'>
-      <div className="text">
+      <div className='text'>
         <h2>
           {
             winner === false
@@ -12,12 +12,11 @@ export const WinnerModal = ({ winner, resetGame }) => {
           }
         </h2>
 
-        { winner && (
-            <header className="win">
-              <Square>{ winner }</Square>
-            </header>
-          )
-        }
+        {winner && (
+          <header className='win'>
+            <Square>{winner}</Square>
+          </header>
+        )}
 
         <footer>
           <button onClick={resetGame}>Empezar de nuevo</button>

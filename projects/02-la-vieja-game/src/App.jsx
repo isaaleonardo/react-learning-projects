@@ -8,7 +8,7 @@ import { checkWinner, checkEndGame } from './utils.js'
 import { Square } from './components/Square.jsx'
 import { WinnerModal } from './components/WinnerModal.jsx'
 
-function App() {
+function App () {
   const [board, setBoard] = useState(() => {
     const localStorageBoard = window.localStorage.getItem('board')
 
@@ -70,10 +70,10 @@ function App() {
   }
 
   return (
-    <main className="board">
+    <main className='board'>
       <h1>La Vieja</h1>
 
-      <section className="game">
+      <section className='game'>
         {
           board.map((square, index) => {
             return (
@@ -82,7 +82,7 @@ function App() {
                 index={index}
                 updateBoard={updateBoard}
               >
-                { square }
+                {square}
               </Square>
             )
           })

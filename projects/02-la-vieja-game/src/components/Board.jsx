@@ -1,3 +1,5 @@
+import { Square } from './Square'
+
 export const Board = (board, updateBoard) => {
   board.map((square, index) => {
     return (
@@ -6,7 +8,7 @@ export const Board = (board, updateBoard) => {
         index={index}
         updateBoard={updateBoard}
       >
-        { square }
+        {square}
       </Square>
     )
   })
