@@ -18,8 +18,12 @@ export function App () {
     <main>
       <h1>Little cats facts</h1>
       <button onClick={handleClick}>Get new fact</button>
-      <p>{fact}</p>
-      <img src={`${PREFIX_URL_CAT_IMAGE}${firstWordFrom(fact)}`} alt='Image extracted using the first word of cat fact' />
+      {fact && (
+        <>
+          <p>{fact}</p>
+          <img src={`${PREFIX_URL_CAT_IMAGE}${firstWordFrom(fact)}`} alt='Image extracted using the first word of cat fact' />
+        </>
+      )}
     </main>
   )
 }
