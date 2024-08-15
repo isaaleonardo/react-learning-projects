@@ -1,27 +1,16 @@
-import { useEffect, useState } from 'react'
-import { firstWordFrom } from './utils.js'
-
-import { PREFIX_URL_CAT_IMAGE } from './constants.js'
-import getNewFact from './services/getNewFact.js'
+import { useRandomFactAndImage } from './hooks/useRandomFactAndImage.js'
 
 export function App () {
-  const [fact, setFact] = useState('')
-
-  const handleClick = async () => {
-    const newFact = await getNewFact()
-    setFact(newFact)
-  }
-
-  useEffect(handleClick, [])
+  const { fact, imageUrl, updateFact } = useRandomFactAndImage()
 
   return (
     <main>
       <h1>Little cats facts</h1>
-      <button onClick={handleClick}>Get new fact</button>
+      <button onClick={updateFact}>Get new fact</button>
       {fact && (
         <>
           <p>{fact}</p>
-          <img src={`${PREFIX_URL_CAT_IMAGE}${firstWordFrom(fact)}`} alt='Image extracted using the first word of cat fact' />
+          <img src={imageUrl} alt='Image extracted using the first word of cat fact' />
         </>
       )}
     </main>
