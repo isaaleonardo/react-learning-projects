@@ -1,6 +1,9 @@
+import { useFilter } from '../hooks/useFilter'
 import './Footer.css'
 
-export function Footer ({ filters }) {
+export function Footer () {
+  const { filters } = useFilter()
+
   return (
     <footer className='footer'>
       {

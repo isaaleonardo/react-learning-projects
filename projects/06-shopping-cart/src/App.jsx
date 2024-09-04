@@ -7,17 +7,17 @@ import { IS_DEVELOPMENT } from './config.js'
 
 function App () {
   const { products, loading } = useProducts()
-  const { filters, filterProducts, setFilters } = useFilter()
+  const { filterProducts } = useFilter()
 
   return (
     <>
-      <Header setFilters={setFilters} />
+      <Header />
       {
         loading
           ? <p>Loading...</p>
           : <Products products={filterProducts(products)} />
       }
-      {IS_DEVELOPMENT && <Footer filters={filters} />}
+      {IS_DEVELOPMENT && <Footer />}
     </>
   )
 }

@@ -1,10 +1,12 @@
 import { useId, useState } from 'react'
 import './Filters.css'
+import { useFilter } from '../hooks/useFilter'
 
-export function Filters ({ setFilters }) {
+export function Filters () {
   const [maxPrice, setMaxPrice] = useState(2000)
   const priceInputId = useId()
   const categoryInputId = useId()
+  const { setFilters } = useFilter()
 
   const handleChangeMaxPrice = (event) => {
     setMaxPrice(event.target.value)
