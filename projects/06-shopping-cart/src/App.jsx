@@ -1,39 +1,23 @@
 import { useProducts } from './hooks/useProducts.js'
+import { useFilter } from './hooks/useFilter.js'
 import { Header } from './components/Header.jsx'
 import { Products } from './components/Products.jsx'
-import { useState } from 'react'
+import { Footer } from './components/Footer.jsx'
+import { IS_DEVELOPMENT } from './config.js'
 
 function App () {
   const { products, loading } = useProducts()
-
-  const [filters, setFilters] = useState({
-    maxPrice: null,
-    category: 'all'
-  })
-
-  const filterProducts = (products) => {
-    return products.filter(product => {
-      return (
-        (
-          filters.maxPrice
-            ? product.price <= filters.maxPrice
-            : product
-        ) && (
-          filters.category === 'all' ||
-          product.category === filters.category
-        )
-      )
-    })
-  }
+  const { filters, filterProducts, setFilters } = useFilter()
 
   return (
     <>
-      <Header />
+      <Header setFilters={setFilters} />
       {
         loading
           ? <p>Loading...</p>
           : <Products products={filterProducts(products)} />
       }
+      {IS_DEVELOPMENT && <Footer filters={filters} />}
     </>
   )
 }
