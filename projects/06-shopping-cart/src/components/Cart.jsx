@@ -1,8 +1,10 @@
 import './Cart.css'
 import { useId } from 'react'
-import { CartIcon, ClearCartIcon } from './Icons'
+import { CartIcon, ClearCartIcon, AddToCartIcon } from './Icons'
+import { useCart } from '../hooks/useCart'
 
 export function Cart () {
+  const { cart, addToCart, clearCart } = useCart()
   const checkboxId = useId()
 
   return (
@@ -14,27 +16,37 @@ export function Cart () {
 
       <aside className='cart'>
         <ul>
-          <li>
-            <img
-              src='https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png'
-              alt='image'
-            />
+          {
+            cart.map(product => {
+              return (
+                <li key={product.id}>
+                  <img
+                    src={product.thumbnail}
+                    alt={`Image of ${product.title}`}
+                  />
 
-            <div>
-              <strong>Product</strong> - $9.99
-            </div>
+                  <div>
+                    <strong>{product.title}</strong> - ${product.price}
+                  </div>
 
-            <footer>
-              <small>
-                Qty: 1
-              </small>
+                  <footer>
+                    <small>
+                      Qty: {product.quantity}
+                    </small>
 
-              <button>+</button>
-            </footer>
-          </li>
+                    <button
+                      onClick={() => addToCart(product)}
+                    >
+                      <AddToCartIcon />
+                    </button>
+                  </footer>
+                </li>
+              )
+            })
+          }
         </ul>
 
-        <button>
+        <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
       </aside>
