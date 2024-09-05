@@ -1,3 +1,4 @@
+import { CartProvider } from './context/cart.jsx'
 import { useProducts } from './hooks/useProducts.js'
 import { useFilter } from './hooks/useFilter.js'
 import { Header } from './components/Header.jsx'
@@ -11,7 +12,7 @@ function App () {
   const { filterProducts } = useFilter()
 
   return (
-    <>
+    <CartProvider>
       <Header />
       <Cart />
       {
@@ -20,7 +21,7 @@ function App () {
           : <Products products={filterProducts(products)} />
       }
       {IS_DEVELOPMENT && <Footer />}
-    </>
+    </CartProvider>
   )
 }
 
