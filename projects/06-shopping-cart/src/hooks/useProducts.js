@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import { searchProducts } from '../services/products'
-import { products as productsJSON } from '../mocks/producjs.json'
 
 export function useProducts () {
-  // const [products, setProducts] = useState([])
-  const [products, setProducts] = useState(productsJSON)
+  const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -13,8 +11,8 @@ export function useProducts () {
       try {
         setLoading(true)
         setError(null)
-        // const newProducts = await searchProducts()
-        // setProducts(newProducts)
+        const newProducts = await searchProducts()
+        setProducts(newProducts)
       } catch (e) {
         setError(e.message)
       } finally {
